@@ -51,7 +51,7 @@ $html = '
               <img 
                 src="https://dana-cosmetic.onrender.com/Web_Photo_Editor.jpg"
                 alt="SKINCARE"
-                style="max-height: 60px;"
+                style="max-height: 100px;"
               />
             </td>
           </tr>
