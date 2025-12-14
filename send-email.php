@@ -17,98 +17,64 @@ if (!$data) {
 
 $apiKey = getenv('RESEND_API_KEY');
 $to = getenv('BUSINESS_EMAIL');
-
 $html = '
 <!DOCTYPE html>
 <html lang="he" dir="rtl">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>טופס בריאות חדש</title>
 </head>
-<body style="
-  margin: 0;
-  padding: 0;
-  direction: rtl;
-  text-align: right;
-  font-family: Arial, sans-serif;
-  background-color: #f6f6f6;
-">
 
-  <table width="100%" cellpadding="0" cellspacing="0" style="background-color:#f6f6f6; padding: 20px;">
+<body style="margin:0; padding:0; background-color:#f6f6f6; direction:rtl;">
+  <table width="100%" cellpadding="0" cellspacing="0" style="background-color:#f6f6f6;">
     <tr>
       <td align="center">
 
         <!-- Container -->
-        <table width="600" cellpadding="0" cellspacing="0" style="
-          background-color: #ffffff;
-          border-radius: 8px;
-          overflow: hidden;
-          box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-        ">
-
-          <!-- Header / Logo -->
+        <table width="100%" cellpadding="0" cellspacing="0" style="max-width:600px; background:#ffffff; margin:20px auto; border-radius:12px; overflow:hidden; font-family:Arial, sans-serif;">
+          
+          <!-- Header -->
           <tr>
-            <td style="padding: 20px; text-align: right; background-color: #fff0f5;">
-              <img 
-                src="https://dana-cosmetic.onrender.com/Web_Photo_Editor.jpg"
-                alt="SKINCARE"
-                style="max-height: 100px;"
-              />
+            <td style="background:#fdecef; padding:20px; text-align:center;">
+              <img src="https://skincare-frontend-9nwm.onrender.com/Web_Photo_Editor.jpg"
+                   alt="Skincare Salon"
+                   style="max-width:120px; height:auto; margin-bottom:10px;">
+              <h1 style="margin:0; color:#d81b60;">טופס בריאות חדש</h1>
+              <p style="margin:5px 0 0; color:#555;">התקבל טופס חדש מלקוחה</p>
             </td>
           </tr>
 
-          <!-- Title -->
+          <!-- Content -->
           <tr>
-            <td style="padding: 20px;">
-              <h2 style="margin: 0; color: #db3c78;">
-                טופס בריאות חדש
-              </h2>
-              <p style="margin: 8px 0 0; color: #666;">
-                התקבל טופס חדש מלקוחה
-              </p>
-            </td>
-          </tr>
+            <td style="padding:20px; text-align:right;">
 
-          <!-- Divider -->
-          <tr>
-            <td style="padding: 0 20px;">
-              <hr style="border: none; border-top: 1px solid #eee;">
-            </td>
-          </tr>
-
-          <!-- Details Table -->
-          <tr>
-            <td style="padding: 20px;">
-              <table width="100%" cellpadding="8" cellspacing="0" style="border-collapse: collapse;">
-                <tr style="background-color: #fafafa;">
-                  <td style="font-weight: bold; width: 35%;">שם</td>
-                  <td>'.$data['client_name'].'</td>
+              <table width="100%" cellpadding="0" cellspacing="0" style="border-collapse:collapse;">
+                <tr>
+                  <td style="padding:10px; font-weight:bold; border-bottom:1px solid #eee;">שם</td>
+                  <td style="padding:10px; border-bottom:1px solid #eee;">'.$data['client_name'].'</td>
                 </tr>
                 <tr>
-                  <td style="font-weight: bold;">אימייל</td>
-                  <td>
-                    <a href="mailto:'.$data['client_email'].'" style="color:#db3c78; text-decoration:none;">
-                      '.$data['client_email'].'
-                    </a>
-                  </td>
+                  <td style="padding:10px; font-weight:bold; border-bottom:1px solid #eee;">אימייל</td>
+                  <td style="padding:10px; border-bottom:1px solid #eee;">'.$data['client_email'].'</td>
                 </tr>
-                <tr style="background-color: #fafafa;">
-                  <td style="font-weight: bold;">טלפון</td>
-                  <td>'.$data['client_phone'].'</td>
+                <tr>
+                  <td style="padding:10px; font-weight:bold;">טלפון</td>
+                  <td style="padding:10px;">'.$data['client_phone'].'</td>
                 </tr>
               </table>
+
+              <p style="margin-top:20px; color:#777; font-size:14px;">
+                📎 קובץ PDF מצורף למייל זה
+              </p>
+
             </td>
           </tr>
 
           <!-- Footer -->
           <tr>
-            <td style="
-              padding: 15px 20px;
-              background-color: #f9f9f9;
-              font-size: 12px;
-              color: #999;
-              text-align: center;
-            ">
-              הטופס נשלח אוטומטית ממערכת טפסי הבריאות
+            <td style="background:#fafafa; padding:15px; text-align:center; font-size:12px; color:#999;">
+              הטופס נשלח אוטומטית ממערכת Skincare
             </td>
           </tr>
 
@@ -117,10 +83,10 @@ $html = '
       </td>
     </tr>
   </table>
-
 </body>
 </html>
 ';
+
 
 
 $payload = [
