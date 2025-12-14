@@ -49,7 +49,7 @@ $html = '
           <tr>
             <td style="padding: 20px; text-align: right; background-color: #fff0f5;">
               <img 
-                src="https://skincare-frontend-9nwm.onrender.com/Web_Photo_Editor.jpg"
+                src="https://dana-cosmetic.onrender.com/Web_Photo_Editor.jpg"
                 alt="SKINCARE"
                 style="max-height: 60px;"
               />
