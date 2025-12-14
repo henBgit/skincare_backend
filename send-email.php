@@ -18,12 +18,110 @@ if (!$data) {
 $apiKey = getenv('RESEND_API_KEY');
 $to = getenv('BUSINESS_EMAIL');
 
-$html = "
-<h2>טופס בריאות חדש</h2>
-<p><b>שם:</b> {$data['client_name']}</p>
-<p><b>אימייל:</b> {$data['client_email']}</p>
-<p><b>טלפון:</b> {$data['client_phone']}</p>
-";
+$html = '
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+</head>
+<body style="
+  margin: 0;
+  padding: 0;
+  direction: rtl;
+  text-align: right;
+  font-family: Arial, sans-serif;
+  background-color: #f6f6f6;
+">
+
+  <table width="100%" cellpadding="0" cellspacing="0" style="background-color:#f6f6f6; padding: 20px;">
+    <tr>
+      <td align="center">
+
+        <!-- Container -->
+        <table width="600" cellpadding="0" cellspacing="0" style="
+          background-color: #ffffff;
+          border-radius: 8px;
+          overflow: hidden;
+          box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        ">
+
+          <!-- Header / Logo -->
+          <tr>
+            <td style="padding: 20px; text-align: right; background-color: #fff0f5;">
+              <img 
+                src="https://skincare-frontend-9nwm.onrender.com/Web_Photo_Editor.jpg"
+                alt="SKINCARE"
+                style="max-height: 60px;"
+              />
+            </td>
+          </tr>
+
+          <!-- Title -->
+          <tr>
+            <td style="padding: 20px;">
+              <h2 style="margin: 0; color: #db3c78;">
+                טופס בריאות חדש
+              </h2>
+              <p style="margin: 8px 0 0; color: #666;">
+                התקבל טופס חדש מלקוחה
+              </p>
+            </td>
+          </tr>
+
+          <!-- Divider -->
+          <tr>
+            <td style="padding: 0 20px;">
+              <hr style="border: none; border-top: 1px solid #eee;">
+            </td>
+          </tr>
+
+          <!-- Details Table -->
+          <tr>
+            <td style="padding: 20px;">
+              <table width="100%" cellpadding="8" cellspacing="0" style="border-collapse: collapse;">
+                <tr style="background-color: #fafafa;">
+                  <td style="font-weight: bold; width: 35%;">שם</td>
+                  <td>'.$data['client_name'].'</td>
+                </tr>
+                <tr>
+                  <td style="font-weight: bold;">אימייל</td>
+                  <td>
+                    <a href="mailto:'.$data['client_email'].'" style="color:#db3c78; text-decoration:none;">
+                      '.$data['client_email'].'
+                    </a>
+                  </td>
+                </tr>
+                <tr style="background-color: #fafafa;">
+                  <td style="font-weight: bold;">טלפון</td>
+                  <td>'.$data['client_phone'].'</td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <!-- Footer -->
+          <tr>
+            <td style="
+              padding: 15px 20px;
+              background-color: #f9f9f9;
+              font-size: 12px;
+              color: #999;
+              text-align: center;
+            ">
+              הטופס נשלח אוטומטית ממערכת טפסי הבריאות
+            </td>
+          </tr>
+
+        </table>
+
+      </td>
+    </tr>
+  </table>
+
+</body>
+</html>
+';
+
 
 $payload = [
   "from" => "טופס בריאות <onboarding@resend.dev>",
