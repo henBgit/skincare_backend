@@ -90,7 +90,7 @@ $html = '
 
 
 $payload = [
-  "from" => "טופס בריאות <henborochov2@gmail.com>",
+  "from" => "טופס בריאות <onboarding@resend.dev>",
   "to" => [$to],
   "reply_to" => $data['client_email'],
   "subject" => "טופס בריאות חדש – {$data['client_name']}",
